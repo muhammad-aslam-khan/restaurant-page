@@ -1,56 +1,54 @@
 // import "./styles.css";
 // import restPicture from "./assets/restaurant.jpg";
 // import dishPicture from "./assets/dish.jpg";
-
+import createFooter from "./footer.js";
 import createHomePage from "./home-page.js";
 import createMenuPage from "./menu-page.js";
+import createAboutPage from "./about-page.js";
 
 const homeBtn = document.querySelector("#home-btn");
 const menuBtn = document.querySelector("#menu-btn");
 const aboutBtn = document.querySelector("#about-btn");
 
-homeBtn.addEventListener("click", (e) => loadHomePage(e));
-// window.addEventListener("load", (e) => loadHomePage(e));
+window.addEventListener("load", (e) => loadSelectedPage(e, "home"));
 
-function loadHomePage(e) {
+homeBtn.addEventListener("click", (e) => loadSelectedPage(e, "home"));
+menuBtn.addEventListener("click", (e) => loadSelectedPage(e, "menu"));
+aboutBtn.addEventListener("click", (e) => loadSelectedPage(e, "about"));
+
+export default function loadSelectedPage(e, page) {
 	// On click events first remove existing page
 	if (e.type === "click") {
-		const existingContent = document.querySelector("#content");
-		existingContent.remove();
+		document.querySelector("#content").remove();
+		document.querySelector("#footer").remove();
 	}
 
-	setActiveBtn("home");
+	setActiveBtn(page);
 
-	document.body.append(createHomePage()); // Create and append new page
-}
+	// Create and append new page
+	if (page === "home") document.body.append(createHomePage());
+	else if (page === "menu") document.body.append(createMenuPage());
+	else if (page === "about") document.body.append(createAboutPage());
 
-function loadManuPage(e) {
-	// On click events first remove existing page
-	if (e.type === "click") {
-		const existingContent = document.querySelector("#content");
-		existingContent.remove();
-	}
-
-	setActiveBtn("menu");
-
-	document.body.append(createMenuPage()); // Create and append new page
+	// Append Footer
+	document.body.append(createFooter());
 }
 
 function setActiveBtn(btn) {
 	if (btn === "home") {
-		homeBtn.id = "active";
+		homeBtn.classList.add("active");
 
-		menuBtn.removeAttribute("id");
-		aboutBtn.removeAttribute("id");
+		menuBtn.classList.remove("active");
+		aboutBtn.classList.remove("active");
 	} else if (btn === "menu") {
-		menuBtn.id = "active";
+		menuBtn.classList.add("active");
 
-		homeBtn.removeAttribute("id");
-		aboutBtn.removeAttribute("id");
+		homeBtn.classList.remove("active");
+		aboutBtn.classList.remove("active");
 	} else if (btn === "about") {
-		aboutBtn.id = "active";
+		aboutBtn.classList.add("active");
 
-		homeBtn.removeAttribute("id");
-		menuBtn.removeAttribute("id");
+		homeBtn.classList.remove("active");
+		menuBtn.classList.remove("active");
 	}
 }

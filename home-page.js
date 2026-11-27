@@ -1,11 +1,10 @@
-import createFooter from "./footer.js";
 import createElement from "./helper-functions.js";
+import loadSelectedPage from "./index.js";
 
 export default function createHomePage() {
 	const homeDiv = createElement("div", "", "home", "content");
 
 	homeDiv.append(createMainSection());
-	homeDiv.append(createFooter());
 
 	return homeDiv;
 }
@@ -35,10 +34,14 @@ function createMainHeroSection() {
 	const heroHeading = createElement("h1", "The Good Fork");
 	const heroSubHeading = createElement("p", "Great Food. Good Mood");
 	const heroHeadingLine = createElement("div", "", "hero-line");
-	const heroExploreBtn = createElement(
+	const exploreMenuBtn = createElement(
 		"button",
 		"Explore Our Menu →",
 		"explore-btn",
+	);
+
+	exploreMenuBtn.addEventListener("click", (e) =>
+		loadSelectedPage(e, "menu"),
 	);
 
 	// Styling
@@ -74,7 +77,7 @@ function createMainHeroSection() {
 	background-color: var(--color2);
 	margin: 25px 0;`;
 
-	heroExploreBtn.style.cssText = `background-color: var(--color2);
+	exploreMenuBtn.style.cssText = `background-color: var(--color2);
 	color: var(--color1);
 	border: none;
 	border-radius: 30px;
@@ -90,7 +93,7 @@ function createMainHeroSection() {
 		heroHeading,
 		heroSubHeading,
 		heroHeadingLine,
-		heroExploreBtn,
+		exploreMenuBtn,
 	);
 
 	heroSection.append(heroTextDiv);
