@@ -1,5 +1,19 @@
 import createElement from "./helper-functions.js";
 
+// Dish images import
+import bruschetta from "./assets/bruschetta.jpg";
+import soup from "./assets/mushroom-soup.jpg";
+import garlicBread from "./assets/garlic-bread.jpg";
+import wings from "./assets/chicken-wings.jpg";
+import iceCream from "./assets/ice-cream.jpg";
+import cheeseCake from "./assets/cheesecake.jpg";
+import applePie from "./assets/apple-pie.jpg";
+import chocolateCake from "./assets/chocolate-cake.jpg";
+import grilledChicken from "./assets/grilled-chicken.jpg";
+import steak from "./assets/beef-steak.jpg";
+import pasta from "./assets/pasta.jpg";
+import risotto from "./assets/vegetable-risotto.jpg";
+
 const menuSecHeadings = {
 	starters: {
 		span: "01",
@@ -22,7 +36,7 @@ const dishes = {
 	starters: [
 		{
 			img: {
-				src: "./assets/bruschetta.jpg",
+				src: bruschetta,
 				alt: "Tomato bruschetta",
 			},
 			dishTitleDiv: {
@@ -33,7 +47,7 @@ const dishes = {
 		},
 		{
 			img: {
-				src: "./assets/mushroom-soup.jpg",
+				src: soup,
 				alt: "Creamy mushroom soup",
 			},
 			dishTitleDiv: {
@@ -44,7 +58,7 @@ const dishes = {
 		},
 		{
 			img: {
-				src: "./assets/garlic-bread.jpg",
+				src: garlicBread,
 				alt: "Garlic bread",
 			},
 			dishTitleDiv: {
@@ -55,7 +69,7 @@ const dishes = {
 		},
 		{
 			img: {
-				src: "./assets/chicken-wings.jpg",
+				src: wings,
 				alt: "Grilled chicken wings",
 			},
 			dishTitleDiv: {
@@ -68,53 +82,53 @@ const dishes = {
 	deserts: [
 		{
 			img: {
-				src: "./assets/grilled-chicken.jpg",
-				alt: "Grilled chicken",
+				src: iceCream,
+				alt: "Vanilla ice cream",
 			},
 			dishTitleDiv: {
-				h3: "Herb Grilled Chicken",
-				span: "$18",
+				h3: "Vanilla Ice Cream",
+				span: "$6",
 			},
-			p: "Grilled chicken breast served with seasonal vegetables and herbs.",
+			p: "Smooth and creamy vanilla ice cream made with rich milk and natural vanilla.",
 		},
 		{
 			img: {
-				src: "./assets/beef-steak.jpg",
-				alt: "Beef steak",
+				src: cheeseCake,
+				alt: "Classic cheesecake",
 			},
 			dishTitleDiv: {
-				h3: "Classic Beef Steak",
-				span: "$24",
+				h3: "Classic Cheesecake",
+				span: "$8",
 			},
-			p: "Tender beef steak cooked to perfection with roasted potatoes.",
+			p: "A rich and creamy cheesecake with a buttery biscuit crust and a delicate vanilla flavor.",
 		},
 		{
 			img: {
-				src: "./assets/pasta.jpg",
-				alt: "Creamy pasta",
+				src: applePie,
+				alt: "Homemade apple pie",
 			},
 			dishTitleDiv: {
-				h3: "Creamy Alfredo Pasta",
-				span: "$16",
+				h3: "Homemade Apple Pie",
+				span: "$7",
 			},
-			p: "Italian pasta tossed in a creamy parmesan and garlic sauce.",
+			p: "A warm, golden-baked pastry filled with sweet cinnamon-spiced apples.",
 		},
 		{
 			img: {
-				src: "./assets/vegetable-risotto.jpg",
-				alt: "Vegetable risotto",
+				src: chocolateCake,
+				alt: "Rich chocolate cake",
 			},
 			dishTitleDiv: {
-				h3: "Garden Vegetable Risotto",
-				span: "$15",
+				h3: "Chocolate Cake",
+				span: "$9",
 			},
-			p: "Creamy rice cooked with fresh seasonal vegetables and parmesan.",
+			p: "A moist and decadent chocolate cake layered with smooth chocolate frosting.",
 		},
 	],
 	mainCourse: [
 		{
 			img: {
-				src: "./assets/grilled-chicken.jpg",
+				src: grilledChicken,
 				alt: "Grilled chicken",
 			},
 			dishTitleDiv: {
@@ -125,7 +139,7 @@ const dishes = {
 		},
 		{
 			img: {
-				src: "./assets/beef-steak.jpg",
+				src: steak,
 				alt: "Beef steak",
 			},
 			dishTitleDiv: {
@@ -136,7 +150,7 @@ const dishes = {
 		},
 		{
 			img: {
-				src: "./assets/pasta.jpg",
+				src: pasta,
 				alt: "Creamy pasta",
 			},
 			dishTitleDiv: {
@@ -147,7 +161,7 @@ const dishes = {
 		},
 		{
 			img: {
-				src: "./assets/vegetable-risotto.jpg",
+				src: risotto,
 				alt: "Vegetable risotto",
 			},
 			dishTitleDiv: {
@@ -168,7 +182,6 @@ export default function createMenuPage() {
 		createMainCourseSection(),
 		createDesertsSection(),
 		createNoteSection(),
-		// createFooter(),
 	);
 
 	//Styling
@@ -305,9 +318,9 @@ function createDishesGrid(gridHeading, dishes) {
 
 function createDish(dish) {
 	const dishCard = createElement("article", "", "dish-card"); // Parent
-	const dishPicture = new URL(dish.img.src, import.meta.url);
+	// const dishPicture = new URL(dish.img.src, import.meta.url);
 	const dishImg = createElement("img");
-	dishImg.src = dishPicture.href;
+	dishImg.src = dish.img.src;
 	dishImg.alt = dish.img.alt;
 
 	const dishInfo = createElement("div", "", "dish-info"); // Parent

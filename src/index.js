@@ -1,10 +1,8 @@
-// import "./styles.css";
-// import restPicture from "./assets/restaurant.jpg";
-// import dishPicture from "./assets/dish.jpg";
-import createFooter from "./footer.js";
+import "./styles.css";
 import createHomePage from "./home-page.js";
 import createMenuPage from "./menu-page.js";
 import createAboutPage from "./about-page.js";
+import createFooter from "./footer.js";
 
 const homeBtn = document.querySelector("#home-btn");
 const menuBtn = document.querySelector("#menu-btn");

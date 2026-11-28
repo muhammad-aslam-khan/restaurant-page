@@ -1,4 +1,6 @@
 import createElement from "./helper-functions.js";
+import aboutHeroImg from "./assets/about-hero.jpg";
+import restaurantImg from "./assets/restaurant-interior.jpg";
 
 export default function createAboutPage() {
 	const about = createElement("div", "", "about-page", "content");
@@ -11,6 +13,7 @@ export default function createAboutPage() {
 	);
 
 	// Styling
+	about.style.cssText = `background-color: var(--color5);`;
 
 	return about;
 }
@@ -21,7 +24,7 @@ function createIntroSection() {
 	const sectionContent = createElement("div", "", "about-hero-content"); // Parent
 
 	const span = createElement("span", "A LITTLE ABOUT US", "about-eyebrow");
-	const heading = createElement("h1", "AMore Than Just a Meal");
+	const heading = createElement("h1", "A More Than Just a Meal");
 	const description = createElement(
 		"p",
 		"Good food brings people together. At The Good Fork, every meal is made with care, passion, and a love for sharing good moments.",
@@ -32,6 +35,31 @@ function createIntroSection() {
 	section.append(sectionContent);
 
 	// Styling
+	section.style.cssText = `min-height: 350px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 60px 10%;
+	background:
+		linear-gradient(rgba(5, 3, 2, 0.78), rgba(5, 3, 2, 0.78)),
+		url(${aboutHeroImg}) center/cover no-repeat;
+	color: var(--color5);`;
+
+	sectionContent.style.cssText = `max-width: 750px;`;
+
+	span.style.cssText = `color: var(--color2);
+	font-size: 0.85rem;
+	font-weight: bold;
+	letter-spacing: 3px;`;
+
+	heading.style.cssText = `font-size: 3.3rem;
+	margin: 18px 0;`;
+
+	description.style.cssText = `font-size: 1.1rem;
+	line-height: 1.8;
+	max-width: 650px;
+	margin: 0 auto;`;
 
 	return section;
 }
@@ -42,9 +70,7 @@ function createOurStorySection() {
 	const storyImgDiv = createElement("div", "", "story-image"); // Parent
 
 	const storyImg = createElement("img");
-	const imgUrl = new URL("./assets/restaurant-interior.jpg", import.meta.url)
-		.href;
-	storyImg.src = imgUrl;
+	storyImg.src = restaurantImg;
 	storyImg.alt = "Warm and welcoming restaurant interior";
 
 	const storyContent = createElement("div", "", "story-content"); // Parent
@@ -67,6 +93,38 @@ function createOurStorySection() {
 	story.append(storyImgDiv, storyContent);
 
 	// Styling
+
+	story.style.cssText = `display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	gap: 60px;
+	padding: 80px 10%;`;
+
+	span.style.cssText = `color: var(--color3);
+	font-size: 0.85rem;
+	font-weight: bold;
+	letter-spacing: 3px;`;
+
+	storyImg.style.cssText = `width: 100%;
+	height: 390px;
+	object-fit: cover;
+	border-radius: 8px;
+	display: block;`;
+
+	heading.style.cssText = `color: var(--color4);
+	font-size: 2.3rem;
+	line-height: 1.3;
+	margin: 15px 0 20px;`;
+
+	p1.style.cssText = `color: var(--color9);
+	line-height: 1.9;
+	margin-bottom: 15px;
+	font-size: 1rem;`;
+
+	p2.style.cssText = `color: var(--color9);
+	line-height: 1.9;
+	margin-bottom: 15px;
+	font-size: 1rem;`;
 
 	return story;
 }
@@ -113,6 +171,21 @@ function createOurPhilosophySection() {
 
 	// Styling
 
+	section.style.cssText = `background-color: #eee5d8;
+	padding: 75px 8%;
+	text-align: center;`;
+
+	heading.style.cssText = `color: var(--color4);
+	font-size: 2.4rem;
+	margin: 15px 0;`;
+
+	description.style.cssText = `color: var(--color8);
+	margin-bottom: 45px;`;
+
+	valueGrid.style.cssText = `display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 25px;`;
+
 	return section;
 }
 
@@ -129,8 +202,22 @@ function createClosingSection() {
 
 	// Styling
 
+	section.style.cssText = `background-color: var(--color4);
+	color: var(--color5);
+	text-align: center;
+	padding: 65px 10%;`;
+
+	heading.style.cssText = `color: var(--color2);
+	font-size: 2.2rem;
+	margin-bottom: 15px;`;
+
+	description.style.cssText = `max-width: 650px;
+	margin: 0 auto;
+	line-height: 1.8;`;
+
 	return section;
 }
+
 // Helper Function
 function createValueCard(valueObj) {
 	const valueCard = createElement("article", "", "value-card"); // Parent
@@ -142,6 +229,22 @@ function createValueCard(valueObj) {
 	valueCard.append(icon, heading, description);
 
 	// Styling
+
+	valueCard.style.cssText = `background-color: #faf7f1;
+	padding: 35px 25px;
+	border-radius: 8px;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);`;
+
+	icon.style.cssText = `color: var(--color3);
+	font-size: 2.5rem;
+	margin-bottom: 15px;`;
+
+	heading.style.cssText = `color: var(--color4);
+	font-size: 1.3rem;
+	margin-bottom: 12px;`;
+
+	description.style.cssText = `color: var(--color8);
+	line-height: 1.7;`;
 
 	return valueCard;
 }
